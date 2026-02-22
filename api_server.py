@@ -1,152 +1,129 @@
 """
-🌐 WEB VULNERABILITY SCANNER + BERT URL DETECTION API
-FastAPI – Production Ready
+🌐 CYBERSENTINEL X - WEB VULNERABILITY SCANNER API
+FastAPI – Production Ready (High Performance)
 """
 
+import os
+import sys
+from pathlib import Path
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel
-from pathlib import Path
-import sys
+from pydantic import BaseModel, Field
+import uvicorn
 
 # -----------------------
 # Path setup
 # -----------------------
-ROOT_DIR = Path(__file__).parent
+# Resolve ensures it works on Windows and Linux (Render)
+ROOT_DIR = Path(__file__).parent.resolve()
 sys.path.insert(0, str(ROOT_DIR))
 
 # -----------------------
 # Internal imports
 # -----------------------
-from main_scanner import WebScanner
-from ml import BertURLDetector
+try:
+    from main_scanner import WebScanner
+except ImportError:
+    print("❌ Error: main_scanner.py not found in the directory.")
+    sys.exit(1)
 
 # -----------------------
 # App init
 # -----------------------
 app = FastAPI(
-    title="Web Scan + ML Security API",
-    version="1.1.0"
+    title="CyberSentinel X - Web Security Engine",
+    description="API for SSL, Ports, Headers, and Tech Vulnerability Scanning",
+    version="1.2.0"
 )
 
+# Enable CORS for React Frontend Integration
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
+    allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
 # -----------------------
-# Load scanners ONCE
+# Load Scanner ONCE
 # -----------------------
 web_scanner = WebScanner()
-bert_detector = BertURLDetector()
 
 # -----------------------
 # Request Models
 # -----------------------
 class ScanRequest(BaseModel):
-    target: str
+    target: str = Field(..., example="google.com")
     full_scan: bool = True
 
-
-class URLCheckRequest(BaseModel):
-    url: str
-
-
 # -----------------------
-# Health
+# 1️⃣ Health Check
 # -----------------------
 @app.get("/api/health")
-def health():
+async def health():
     return {
-        "status": "ok",
-        "services": {
-            "web_scanner": "active",
-            "bert_url_detector": "active"
-        }
+        "status": "online",
+        "engine": "WebScanner Active",
+        "ml_engine": "Disabled (Cloud mode recommended)"
     }
 
-
 # =====================================================
-# 1️⃣ WEB VULNERABILITY SCAN (BLOCKING)
+# 2️⃣ WEB VULNERABILITY SCAN
 # =====================================================
 @app.post("/api/scan")
-def scan_website(request: ScanRequest):
+async def scan_website(request: ScanRequest):
     """
-    Blocking scan:
-    - frontend waits
-    - full scan completes
-    - returns final JSON only
+    Performs a comprehensive security scan:
+    - SSL Certificate Validation
+    - Port Scanning (Nmap)
+    - Security Headers Check
+    - Tech Stack Detection
     """
 
-    if not request.target.strip():
-        raise HTTPException(status_code=400, detail="Target URL required")
+    target_input = request.target.strip()
+    
+    if not target_input:
+        raise HTTPException(status_code=400, detail="Target URL/Domain is required")
 
     try:
+        # Performing the scan using main_scanner logic
         report = (
-            web_scanner.scan(request.target, full_scan=True)
+            web_scanner.scan(target_input, full_scan=True)
             if request.full_scan
-            else web_scanner.quick_scan(request.target)
+            else web_scanner.quick_scan(target_input)
         )
 
         return {
-            "target": report.target,
-            "ip_address": report.ip_address,
-            "scan_time": report.scan_time,
-            "duration": report.duration,
-            "grade": report.grade,
-            "risk_score": report.risk_score,
-            "total_vulnerabilities": report.total_vulnerabilities,
-            "results": {
-                "ports": report.port_results,
-                "ssl": report.ssl_results,
-                "headers": report.header_results,
-                "technologies": report.tech_results,
-                "vulnerabilities": report.vuln_results,
-                "directories": report.dir_results
+            "status": "success",
+            "data": {
+                "target": report.target,
+                "ip_address": report.ip_address,
+                "scan_time": report.scan_time,
+                "duration": f"{report.duration}s",
+                "grade": report.grade,
+                "risk_score": report.risk_score,
+                "total_vulnerabilities": report.total_vulnerabilities,
+                "results": {
+                    "ports": report.port_results,
+                    "ssl": report.ssl_results,
+                    "headers": report.header_results,
+                    "technologies": report.tech_results,
+                    "vulnerabilities": report.vuln_results,
+                    "directories": report.dir_results
+                }
             }
         }
 
     except Exception as e:
+        # Catching any internal scanner errors
+        print(f"DEBUG ERROR: {str(e)}")
         raise HTTPException(status_code=500, detail=f"Scan failed: {str(e)}")
 
-
-# =====================================================
-# 2️⃣ BERT URL PHISHING DETECTION
-# =====================================================
-@app.post("/api/url-scan")
-def check_url(request: URLCheckRequest):
-    """
-    ML-based URL detection
-    - uses fine-tuned BERT
-    - returns phishing / legitimate
-    """
-
-    if not request.url.strip():
-        raise HTTPException(status_code=400, detail="URL required")
-
-    try:
-        prediction = bert_detector.predict(request.url)
-
-        return {
-            "url": request.url,
-            "prediction": prediction["label"],
-            "confidence": prediction["confidence"]
-        }
-
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=f"ML prediction failed: {str(e)}")
-
-
 # -----------------------
-# Local run (DEV only)
+# Local run / Render Entry point
 # -----------------------
 if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run(
-        "api_server:app",
-        host="0.0.0.0",
-        port=8000,
-        reload=True
-    )
+    # Get port from environment for Cloud Deployment
+    port = int(os.environ.get("PORT", 8000))
+    uvicorn.run("api_server:app", host="0.0.0.0", port=port, reload=True)
