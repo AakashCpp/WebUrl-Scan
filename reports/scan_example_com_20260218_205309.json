@@ -1,0 +1,93 @@
+{
+  "target": "example.com",
+  "ip_address": "104.18.26.120",
+  "scan_time": "2026-02-18T20:52:44.558542",
+  "duration": 24.52772569656372,
+  "grade": "B",
+  "risk_score": 25,
+  "total_vulnerabilities": 4,
+  "port_results": {
+    "open_ports": [
+      {
+        "port": 80,
+        "service": "HTTP",
+        "risk": "low",
+        "banner": "HTTP/1.1 400 Bad Request\r\nDate: Wed, 18 Feb 2026 15:22:44 GMT\r\nContent-Length: 68\r\nConnection: close\r\nCache-Control: private, max-age=0, no-store, no-cache, must-revalidate, post-check=0, pre-check=0\r"
+      },
+      {
+        "port": 443,
+        "service": "HTTPS",
+        "risk": "low",
+        "banner": ""
+      },
+      {
+        "port": 8080,
+        "service": "HTTP-Proxy",
+        "risk": "medium",
+        "banner": "HTTP/1.1 400 Bad Request\r\nDate: Wed, 18 Feb 2026 15:22:44 GMT\r\nContent-Length: 68\r\nConnection: close\r\nCache-Control: private, max-age=0, no-store, no-cache, must-revalidate, post-check=0, pre-check=0\r"
+      },
+      {
+        "port": 8443,
+        "service": "HTTPS-Alt",
+        "risk": "low",
+        "banner": "HTTP/1.1 400 Bad Request\r\nServer: cloudflare\r\nDate: Wed, 18 Feb 2026 15:22:44 GMT\r\nContent-Type: text/html\r\nContent-Length: 253\r\nConnection: close\r\nCF-RAY: -"
+      }
+    ],
+    "summary": {
+      "total_scanned": 24,
+      "open_ports": 4,
+      "risk_breakdown": {
+        "critical": 0,
+        "high": 0,
+        "medium": 1,
+        "low": 3
+      },
+      "critical_findings": [],
+      "high_findings": []
+    }
+  },
+  "ssl_results": {
+    "has_ssl": true,
+    "is_valid": true,
+    "grade": "A",
+    "version": "TLSv1.3",
+    "issuer": "Cloudflare TLS Issuing ECC CA 3",
+    "expires": "2026-05-14",
+    "days_until_expiry": 84,
+    "vulnerabilities": []
+  },
+  "header_results": {
+    "score": 0,
+    "grade": "F",
+    "summary": "",
+    "missing_headers": [],
+    "present_headers": [],
+    "partial_headers": [],
+    "information_disclosure": [],
+    "other_issues": [
+      "SSL/TLS certificate error"
+    ]
+  },
+  "vuln_results": {
+    "vulnerabilities": [],
+    "sensitive_files": [],
+    "risk_score": 0
+  },
+  "dir_results": {
+    "found_directories": [],
+    "interesting_findings": [],
+    "total_checked": 66
+  },
+  "tech_results": {
+    "server": "cloudflare",
+    "cms": "",
+    "technologies": [
+      {
+        "name": "cloudflare",
+        "category": "Web Server",
+        "source": "Header"
+      }
+    ],
+    "javascript_libraries": []
+  }
+}

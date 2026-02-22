@@ -1,0 +1,760 @@
+{
+  "target": "https://openai.com",
+  "ip_address": "172.64.154.211",
+  "scan_time": "2026-01-29T22:13:42.983515",
+  "duration": 97.29712748527527,
+  "grade": "B",
+  "risk_score": 26,
+  "total_vulnerabilities": 6,
+  "port_results": {
+    "open_ports": [
+      {
+        "port": 80,
+        "service": "HTTP",
+        "risk": "low",
+        "banner": "HTTP/1.1 400 Bad Request\r\nDate: Thu, 29 Jan 2026 16:43:45 GMT\r\nContent-Length: 68\r\nConnection: close\r\nCache-Control: private, max-age=0, no-store, no-cache, must-revalidate, post-check=0, pre-check=0\r"
+      },
+      {
+        "port": 443,
+        "service": "HTTPS",
+        "risk": "low",
+        "banner": ""
+      }
+    ],
+    "summary": {
+      "total_scanned": 24,
+      "open_ports": 2,
+      "risk_breakdown": {
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 2
+      },
+      "critical_findings": [],
+      "high_findings": []
+    }
+  },
+  "ssl_results": {
+    "has_ssl": true,
+    "is_valid": false,
+    "grade": "C",
+    "version": "TLSv1.3",
+    "issuer": "WE1",
+    "expires": "2026-04-23",
+    "days_until_expiry": 83,
+    "vulnerabilities": []
+  },
+  "header_results": {
+    "score": 73,
+    "grade": "B",
+    "summary": "6 present, 0 partial, 2 missing out of 8 headers",
+    "missing_headers": [
+      {
+        "name": "Content-Security-Policy",
+        "importance": "critical",
+        "description": "Prevents XSS and injection attacks",
+        "weight": 20
+      },
+      {
+        "name": "X-XSS-Protection",
+        "importance": "low",
+        "description": "Legacy XSS filter (deprecated in modern browsers)",
+        "weight": 5
+      }
+    ],
+    "present_headers": [
+      {
+        "name": "Strict-Transport-Security",
+        "value": "max-age=31536000; includeSubDomains; preload",
+        "importance": "critical",
+        "weight": 20,
+        "is_partial": false
+      },
+      {
+        "name": "X-Frame-Options",
+        "value": "SAMEORIGIN",
+        "importance": "high",
+        "weight": 15,
+        "is_partial": false
+      },
+      {
+        "name": "X-Content-Type-Options",
+        "value": "nosniff",
+        "importance": "high",
+        "weight": 15,
+        "is_partial": false
+      },
+      {
+        "name": "Referrer-Policy",
+        "value": "same-origin",
+        "importance": "medium",
+        "weight": 10,
+        "is_partial": false
+      },
+      {
+        "name": "Permissions-Policy",
+        "value": "accelerometer=(),browsing-topics=(),camera=(),clipboard-read=(),clipboard-write=(),geolocation=(),gyroscope=(),hid=(),interest-cohort=(),magnetometer=",
+        "importance": "medium",
+        "weight": 10,
+        "is_partial": false
+      },
+      {
+        "name": "Cross-Origin-Opener-Policy",
+        "value": "same-origin",
+        "importance": "low",
+        "weight": 5,
+        "is_partial": false
+      }
+    ],
+    "partial_headers": [],
+    "information_disclosure": [
+      {
+        "header": "server",
+        "value": "cloudflare",
+        "description": "Server software",
+        "penalty": 2
+      }
+    ],
+    "other_issues": []
+  },
+  "vuln_results": {
+    "vulnerabilities": [],
+    "sensitive_files": [
+      {
+        "file": "robots.txt",
+        "url": "https://openai.com/robots.txt",
+        "status": 200,
+        "size": 98,
+        "risk": "medium"
+      },
+      {
+        "file": "sitemap.xml",
+        "url": "https://openai.com/sitemap.xml",
+        "status": 200,
+        "size": 1545,
+        "risk": "medium"
+      }
+    ],
+    "risk_score": 10
+  },
+  "dir_results": {
+    "found_directories": [
+      {
+        "path": "administrator",
+        "url": "https://openai.com/administrator",
+        "status": 403,
+        "type": "forbidden",
+        "interesting": true
+      },
+      {
+        "path": "login",
+        "url": "https://openai.com/login",
+        "status": 403,
+        "type": "forbidden",
+        "interesting": true
+      },
+      {
+        "path": "admin",
+        "url": "https://openai.com/admin",
+        "status": 403,
+        "type": "forbidden",
+        "interesting": true
+      },
+      {
+        "path": "phpmyadmin",
+        "url": "https://openai.com/phpmyadmin",
+        "status": 403,
+        "type": "forbidden",
+        "interesting": true
+      },
+      {
+        "path": "panel",
+        "url": "https://openai.com/panel",
+        "status": 403,
+        "type": "forbidden",
+        "interesting": false
+      },
+      {
+        "path": "conf",
+        "url": "https://openai.com/conf",
+        "status": 403,
+        "type": "forbidden",
+        "interesting": false
+      },
+      {
+        "path": "api",
+        "url": "https://openai.com/api",
+        "status": 403,
+        "type": "forbidden",
+        "interesting": true
+      },
+      {
+        "path": "config",
+        "url": "https://openai.com/config",
+        "status": 403,
+        "type": "forbidden",
+        "interesting": true
+      },
+      {
+        "path": "adminer",
+        "url": "https://openai.com/adminer",
+        "status": 403,
+        "type": "forbidden",
+        "interesting": true
+      },
+      {
+        "path": "api/v2",
+        "url": "https://openai.com/api/v2",
+        "status": 403,
+        "type": "forbidden",
+        "interesting": true
+      },
+      {
+        "path": "settings",
+        "url": "https://openai.com/settings",
+        "status": 403,
+        "type": "forbidden",
+        "interesting": false
+      },
+      {
+        "path": "old",
+        "url": "https://openai.com/old",
+        "status": 403,
+        "type": "forbidden",
+        "interesting": false
+      },
+      {
+        "path": "graphql",
+        "url": "https://openai.com/graphql",
+        "status": 403,
+        "type": "forbidden",
+        "interesting": false
+      },
+      {
+        "path": "test",
+        "url": "https://openai.com/test",
+        "status": 403,
+        "type": "forbidden",
+        "interesting": true
+      },
+      {
+        "path": "development",
+        "url": "https://openai.com/development",
+        "status": 403,
+        "type": "forbidden",
+        "interesting": false
+      },
+      {
+        "path": "rest",
+        "url": "https://openai.com/rest",
+        "status": 403,
+        "type": "forbidden",
+        "interesting": false
+      },
+      {
+        "path": "staging",
+        "url": "https://openai.com/staging",
+        "status": 403,
+        "type": "forbidden",
+        "interesting": false
+      },
+      {
+        "path": "api/v1",
+        "url": "https://openai.com/api/v1",
+        "status": 403,
+        "type": "forbidden",
+        "interesting": true
+      },
+      {
+        "path": "wp-admin",
+        "url": "https://openai.com/wp-admin",
+        "status": 403,
+        "type": "forbidden",
+        "interesting": true
+      },
+      {
+        "path": "upload",
+        "url": "https://openai.com/upload",
+        "status": 403,
+        "type": "forbidden",
+        "interesting": false
+      },
+      {
+        "path": "manager",
+        "url": "https://openai.com/manager",
+        "status": 403,
+        "type": "forbidden",
+        "interesting": false
+      },
+      {
+        "path": "configuration",
+        "url": "https://openai.com/configuration",
+        "status": 403,
+        "type": "forbidden",
+        "interesting": true
+      },
+      {
+        "path": "uploads",
+        "url": "https://openai.com/uploads",
+        "status": 403,
+        "type": "forbidden",
+        "interesting": false
+      },
+      {
+        "path": "files",
+        "url": "https://openai.com/files",
+        "status": 403,
+        "type": "forbidden",
+        "interesting": false
+      },
+      {
+        "path": "secret",
+        "url": "https://openai.com/secret",
+        "status": 403,
+        "type": "forbidden",
+        "interesting": true
+      },
+      {
+        "path": "media",
+        "url": "https://openai.com/media",
+        "status": 403,
+        "type": "forbidden",
+        "interesting": false
+      },
+      {
+        "path": "dev",
+        "url": "https://openai.com/dev",
+        "status": 403,
+        "type": "forbidden",
+        "interesting": false
+      },
+      {
+        "path": "backup",
+        "url": "https://openai.com/backup",
+        "status": 403,
+        "type": "forbidden",
+        "interesting": true
+      },
+      {
+        "path": ".env",
+        "url": "https://openai.com/.env",
+        "status": 403,
+        "type": "forbidden",
+        "interesting": true
+      },
+      {
+        "path": "documents",
+        "url": "https://openai.com/documents",
+        "status": 403,
+        "type": "forbidden",
+        "interesting": false
+      },
+      {
+        "path": "dashboard",
+        "url": "https://openai.com/dashboard",
+        "status": 403,
+        "type": "forbidden",
+        "interesting": false
+      },
+      {
+        "path": "internal",
+        "url": "https://openai.com/internal",
+        "status": 403,
+        "type": "forbidden",
+        "interesting": false
+      },
+      {
+        "path": ".git",
+        "url": "https://openai.com/.git",
+        "status": 403,
+        "type": "forbidden",
+        "interesting": true
+      },
+      {
+        "path": "private",
+        "url": "https://openai.com/private",
+        "status": 403,
+        "type": "forbidden",
+        "interesting": true
+      },
+      {
+        "path": ".htpasswd",
+        "url": "https://openai.com/.htpasswd",
+        "status": 403,
+        "type": "forbidden",
+        "interesting": false
+      },
+      {
+        "path": "assets",
+        "url": "https://openai.com/assets",
+        "status": 403,
+        "type": "forbidden",
+        "interesting": false
+      },
+      {
+        "path": "wp-content",
+        "url": "https://openai.com/wp-content",
+        "status": 403,
+        "type": "forbidden",
+        "interesting": false
+      },
+      {
+        "path": ".svn",
+        "url": "https://openai.com/.svn",
+        "status": 403,
+        "type": "forbidden",
+        "interesting": false
+      },
+      {
+        "path": "wp-includes",
+        "url": "https://openai.com/wp-includes",
+        "status": 403,
+        "type": "forbidden",
+        "interesting": false
+      },
+      {
+        "path": "hidden",
+        "url": "https://openai.com/hidden",
+        "status": 403,
+        "type": "forbidden",
+        "interesting": false
+      },
+      {
+        "path": "cgi-bin",
+        "url": "https://openai.com/cgi-bin",
+        "status": 403,
+        "type": "forbidden",
+        "interesting": false
+      },
+      {
+        "path": "static",
+        "url": "https://openai.com/static",
+        "status": 403,
+        "type": "forbidden",
+        "interesting": false
+      },
+      {
+        "path": "includes",
+        "url": "https://openai.com/includes",
+        "status": 403,
+        "type": "forbidden",
+        "interesting": false
+      },
+      {
+        "path": "js",
+        "url": "https://openai.com/js",
+        "status": 403,
+        "type": "forbidden",
+        "interesting": false
+      },
+      {
+        "path": "scripts",
+        "url": "https://openai.com/scripts",
+        "status": 403,
+        "type": "forbidden",
+        "interesting": false
+      },
+      {
+        "path": "testing",
+        "url": "https://openai.com/testing",
+        "status": 403,
+        "type": "forbidden",
+        "interesting": true
+      },
+      {
+        "path": "images",
+        "url": "https://openai.com/images",
+        "status": 403,
+        "type": "forbidden",
+        "interesting": false
+      },
+      {
+        "path": "logs",
+        "url": "https://openai.com/logs",
+        "status": 403,
+        "type": "forbidden",
+        "interesting": true
+      },
+      {
+        "path": "server-status",
+        "url": "https://openai.com/server-status",
+        "status": 403,
+        "type": "forbidden",
+        "interesting": false
+      },
+      {
+        "path": "error_log",
+        "url": "https://openai.com/error_log",
+        "status": 403,
+        "type": "forbidden",
+        "interesting": true
+      },
+      {
+        "path": "css",
+        "url": "https://openai.com/css",
+        "status": 403,
+        "type": "forbidden",
+        "interesting": false
+      },
+      {
+        "path": "server-info",
+        "url": "https://openai.com/server-info",
+        "status": 403,
+        "type": "forbidden",
+        "interesting": false
+      },
+      {
+        "path": "mysql",
+        "url": "https://openai.com/mysql",
+        "status": 403,
+        "type": "forbidden",
+        "interesting": false
+      },
+      {
+        "path": "bin",
+        "url": "https://openai.com/bin",
+        "status": 403,
+        "type": "forbidden",
+        "interesting": false
+      },
+      {
+        "path": "db",
+        "url": "https://openai.com/db",
+        "status": 403,
+        "type": "forbidden",
+        "interesting": true
+      },
+      {
+        "path": "database",
+        "url": "https://openai.com/database",
+        "status": 403,
+        "type": "forbidden",
+        "interesting": true
+      },
+      {
+        "path": "inc",
+        "url": "https://openai.com/inc",
+        "status": 403,
+        "type": "forbidden",
+        "interesting": false
+      },
+      {
+        "path": "log",
+        "url": "https://openai.com/log",
+        "status": 403,
+        "type": "forbidden",
+        "interesting": true
+      },
+      {
+        "path": "sql",
+        "url": "https://openai.com/sql",
+        "status": 403,
+        "type": "forbidden",
+        "interesting": false
+      },
+      {
+        "path": ".htaccess",
+        "url": "https://openai.com/.htaccess",
+        "status": 403,
+        "type": "forbidden",
+        "interesting": false
+      }
+    ],
+    "interesting_findings": [
+      {
+        "path": "administrator",
+        "url": "https://openai.com/administrator",
+        "status": 403,
+        "type": "forbidden",
+        "interesting": true
+      },
+      {
+        "path": "login",
+        "url": "https://openai.com/login",
+        "status": 403,
+        "type": "forbidden",
+        "interesting": true
+      },
+      {
+        "path": "admin",
+        "url": "https://openai.com/admin",
+        "status": 403,
+        "type": "forbidden",
+        "interesting": true
+      },
+      {
+        "path": "phpmyadmin",
+        "url": "https://openai.com/phpmyadmin",
+        "status": 403,
+        "type": "forbidden",
+        "interesting": true
+      },
+      {
+        "path": "api",
+        "url": "https://openai.com/api",
+        "status": 403,
+        "type": "forbidden",
+        "interesting": true
+      },
+      {
+        "path": "config",
+        "url": "https://openai.com/config",
+        "status": 403,
+        "type": "forbidden",
+        "interesting": true
+      },
+      {
+        "path": "adminer",
+        "url": "https://openai.com/adminer",
+        "status": 403,
+        "type": "forbidden",
+        "interesting": true
+      },
+      {
+        "path": "api/v2",
+        "url": "https://openai.com/api/v2",
+        "status": 403,
+        "type": "forbidden",
+        "interesting": true
+      },
+      {
+        "path": "test",
+        "url": "https://openai.com/test",
+        "status": 403,
+        "type": "forbidden",
+        "interesting": true
+      },
+      {
+        "path": "api/v1",
+        "url": "https://openai.com/api/v1",
+        "status": 403,
+        "type": "forbidden",
+        "interesting": true
+      },
+      {
+        "path": "wp-admin",
+        "url": "https://openai.com/wp-admin",
+        "status": 403,
+        "type": "forbidden",
+        "interesting": true
+      },
+      {
+        "path": "configuration",
+        "url": "https://openai.com/configuration",
+        "status": 403,
+        "type": "forbidden",
+        "interesting": true
+      },
+      {
+        "path": "secret",
+        "url": "https://openai.com/secret",
+        "status": 403,
+        "type": "forbidden",
+        "interesting": true
+      },
+      {
+        "path": "backup",
+        "url": "https://openai.com/backup",
+        "status": 403,
+        "type": "forbidden",
+        "interesting": true
+      },
+      {
+        "path": ".env",
+        "url": "https://openai.com/.env",
+        "status": 403,
+        "type": "forbidden",
+        "interesting": true
+      },
+      {
+        "path": ".git",
+        "url": "https://openai.com/.git",
+        "status": 403,
+        "type": "forbidden",
+        "interesting": true
+      },
+      {
+        "path": "private",
+        "url": "https://openai.com/private",
+        "status": 403,
+        "type": "forbidden",
+        "interesting": true
+      },
+      {
+        "path": "testing",
+        "url": "https://openai.com/testing",
+        "status": 403,
+        "type": "forbidden",
+        "interesting": true
+      },
+      {
+        "path": "logs",
+        "url": "https://openai.com/logs",
+        "status": 403,
+        "type": "forbidden",
+        "interesting": true
+      },
+      {
+        "path": "error_log",
+        "url": "https://openai.com/error_log",
+        "status": 403,
+        "type": "forbidden",
+        "interesting": true
+      },
+      {
+        "path": "db",
+        "url": "https://openai.com/db",
+        "status": 403,
+        "type": "forbidden",
+        "interesting": true
+      },
+      {
+        "path": "database",
+        "url": "https://openai.com/database",
+        "status": 403,
+        "type": "forbidden",
+        "interesting": true
+      },
+      {
+        "path": "log",
+        "url": "https://openai.com/log",
+        "status": 403,
+        "type": "forbidden",
+        "interesting": true
+      }
+    ],
+    "total_checked": 66
+  },
+  "tech_results": {
+    "server": "cloudflare",
+    "cms": "WordPress",
+    "technologies": [
+      {
+        "name": "cloudflare",
+        "category": "Web Server",
+        "source": "Header"
+      },
+      {
+        "name": "WordPress",
+        "category": "CMS",
+        "source": "Path: /wp-login.php"
+      },
+      {
+        "name": "Joomla",
+        "category": "CMS",
+        "source": "Path: /administrator/"
+      },
+      {
+        "name": "Drupal",
+        "category": "CMS",
+        "source": "Path: /user/login"
+      },
+      {
+        "name": "Magento",
+        "category": "CMS",
+        "source": "Path: /admin/"
+      }
+    ],
+    "javascript_libraries": []
+  }
+}

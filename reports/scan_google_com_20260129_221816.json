@@ -1,0 +1,184 @@
+{
+  "target": "https://google.com",
+  "ip_address": "142.250.207.206",
+  "scan_time": "2026-01-29T22:17:30.011897",
+  "duration": 46.308627128601074,
+  "grade": "A",
+  "risk_score": 14,
+  "total_vulnerabilities": 5,
+  "port_results": {
+    "open_ports": [
+      {
+        "port": 80,
+        "service": "HTTP",
+        "risk": "low",
+        "banner": "HTTP/1.0 200 OK\r\nContent-Type: text/html; charset=ISO-8859-1\r\nContent-Security-Policy-Report-Only: object-src 'none';base-uri 'self';script-src 'nonce-ummYKWNHlv9Ojhv3VUEZoQ' 'strict-dynamic' 'report-"
+      },
+      {
+        "port": 443,
+        "service": "HTTPS",
+        "risk": "low",
+        "banner": ""
+      }
+    ],
+    "summary": {
+      "total_scanned": 24,
+      "open_ports": 2,
+      "risk_breakdown": {
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 2
+      },
+      "critical_findings": [],
+      "high_findings": []
+    }
+  },
+  "ssl_results": {
+    "has_ssl": true,
+    "is_valid": true,
+    "grade": "A",
+    "version": "TLSv1.3",
+    "issuer": "WR2",
+    "expires": "2026-03-23",
+    "days_until_expiry": 52,
+    "vulnerabilities": []
+  },
+  "header_results": {
+    "score": 63,
+    "grade": "C",
+    "summary": "5 present, 1 partial, 2 missing out of 8 headers",
+    "missing_headers": [
+      {
+        "name": "X-Content-Type-Options",
+        "importance": "high",
+        "description": "Prevents MIME type sniffing",
+        "weight": 15
+      },
+      {
+        "name": "Referrer-Policy",
+        "importance": "medium",
+        "description": "Controls referrer information",
+        "weight": 10
+      }
+    ],
+    "present_headers": [
+      {
+        "name": "Strict-Transport-Security",
+        "value": "max-age=31536000",
+        "importance": "critical",
+        "weight": 20,
+        "is_partial": false
+      },
+      {
+        "name": "X-Frame-Options",
+        "value": "SAMEORIGIN",
+        "importance": "high",
+        "weight": 15,
+        "is_partial": false
+      },
+      {
+        "name": "Permissions-Policy",
+        "value": "unload=()",
+        "importance": "medium",
+        "weight": 10,
+        "is_partial": false
+      },
+      {
+        "name": "X-XSS-Protection",
+        "value": "0",
+        "importance": "low",
+        "weight": 5,
+        "is_partial": false
+      },
+      {
+        "name": "Cross-Origin-Opener-Policy",
+        "value": "same-origin-allow-popups; report-to=\"gws\"",
+        "importance": "low",
+        "weight": 5,
+        "is_partial": false
+      }
+    ],
+    "partial_headers": [
+      {
+        "name": "Content-Security-Policy",
+        "value": "object-src 'none';base-uri 'self';script-src 'nonce-hlGvZoRC-1pI6-mHfv52-w' 'strict-dynamic' 'report-sample' 'unsafe-eval' 'unsafe-inline' https: http",
+        "importance": "critical",
+        "weight": 20,
+        "is_partial": true
+      }
+    ],
+    "information_disclosure": [
+      {
+        "header": "server",
+        "value": "gws",
+        "description": "Server software",
+        "penalty": 2
+      }
+    ],
+    "other_issues": []
+  },
+  "vuln_results": {
+    "vulnerabilities": [
+      {
+        "type": "Open Redirect",
+        "parameter": "url",
+        "url": "https://google.com/?url=https%3A//evil.com/malicious",
+        "redirects_to": "https://www.google.com/?url=https%3A//evil.com/malicious",
+        "risk": "medium"
+      }
+    ],
+    "sensitive_files": [],
+    "risk_score": 10
+  },
+  "dir_results": {
+    "found_directories": [
+      {
+        "path": "dashboard",
+        "url": "https://google.com/dashboard",
+        "status": 301,
+        "type": "redirect",
+        "redirect_to": "https://www.google.com/dashboard",
+        "interesting": false
+      },
+      {
+        "path": "files",
+        "url": "https://google.com/files",
+        "status": 301,
+        "type": "redirect",
+        "redirect_to": "https://www.google.com/files",
+        "interesting": false
+      },
+      {
+        "path": "js",
+        "url": "https://google.com/js",
+        "status": 301,
+        "type": "redirect",
+        "redirect_to": "https://www.google.com/js",
+        "interesting": false
+      },
+      {
+        "path": "images",
+        "url": "https://google.com/images",
+        "status": 301,
+        "type": "redirect",
+        "redirect_to": "https://www.google.com/images",
+        "interesting": false
+      }
+    ],
+    "interesting_findings": [],
+    "total_checked": 66
+  },
+  "tech_results": {
+    "server": "gws",
+    "cms": "",
+    "technologies": [
+      {
+        "name": "gws",
+        "category": "Web Server",
+        "source": "Header"
+      }
+    ],
+    "javascript_libraries": []
+  }
+}
