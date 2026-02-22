@@ -31,7 +31,7 @@ except ImportError:
 # App init
 # -----------------------
 app = FastAPI(
-    title="CyberSentinel X - Web Security Engine",
+    title="Blackhole - Web Security Engine",
     description="API for SSL, Ports, Headers, and Tech Vulnerability Scanning",
     version="1.2.0"
 )
